@@ -7,4 +7,7 @@ from app import app
 def index(user):
     return render_template('index.html',
                             user=user.title())
-
+                            
+@app.route('/login')
+def login():
+    return render_template('base.html')
