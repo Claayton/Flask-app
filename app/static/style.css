@@ -1,0 +1,15 @@
+@charset 'UTF8';
+
+div.main {
+    max-width: 600px;
+    background-color: aqua;
+    text-align: center;
+}
+
+div.login {
+    padding: 8px;
+}
+
+button {
+    width: 320px;
+}
