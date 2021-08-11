@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
-<div class="main">
+<main>
     <h2>Login</h2>
     <form action="" method="POST">
         {{ form.csrf_token }}
@@ -25,5 +25,5 @@
         </div>
         <button type="submit">Login</button>
     </form>
-</div>
+</main>
 {% endblock %}

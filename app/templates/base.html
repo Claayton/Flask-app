@@ -5,32 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Toilter{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}" rel="stylesheet">
   </head>
   <body>
-
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Toilter</h3>
-      </div>
+    <header>
+      <h1>OTibaH</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Login</a>
+      </nav>
+    </header>
 
       {% block content %}
       {% endblock %}
 
-      <!--<footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>-->
-
-    </div> <!-- /container -->
-
-
+    <footer>
+      <p>&copy; 2021 Clayton Garcia da Silva, Br.</p>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>

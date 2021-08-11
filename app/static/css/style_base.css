@@ -1,0 +1,80 @@
+@charset 'UTF8';
+
+:root {
+    --color1: #5021FA;
+    --color2: #1D27DE;
+    --cloro3: #2B6CF5;
+    --color4: #1D8DDE;
+    --color5: #21D8FA;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #292a2def;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+    
+}
+
+header {
+    position: static;
+    text-align: left;
+    background-color: #1d1e1f;
+    width: 100%;
+}
+
+h1 {
+    color: var(--color4);
+    text-align: left;
+    width: 99%;
+    font-size: 2em;
+    padding-left: 5px;
+    margin-bottom: -10px;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.13);
+}
+
+nav {
+    width: auto;
+    text-align: right;
+    padding: 10px;
+    margin-top: -38px;
+}
+
+nav > a{
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s; /*Tempinho de transição quando passa o mouse no link (animação)*/
+}
+
+nav a:hover{
+    background-color: black;
+    color:white;
+}
+
+main {
+    padding: 20px;
+    margin: 40px auto;
+    text-align: center;
+    max-width: 600px;
+    height: 1000px;
+    background-color: var(--color4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.534);
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #1d1e1f;
+    color: white;
+    bottom: 0;
+    position: static;
+    width: 100%;
+    text-align: center;
+}
