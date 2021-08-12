@@ -1,29 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
 {% extends 'base.html' %}
 
 {% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-
 <main>
-    <h2>Login</h2>
+    <div>
+        <h2 id="titulo">Login</h2>
+    </div>
     <form action="" method="POST">
-        {{ form.csrf_token }}
-        <div class="login">
-            <label for="">Username</label>
-            {{ form.username(_class="form-controll",
-                placeholder="Username") }}
-        </div>
-        <div class="login">
-            <label for="">Password</label>
-            {{ form.password(_class="form-control",
-                placeholder="Password") }}
-        </div>
-        <div class="checkbox">
-            <label for="">
-                {{ form.remember_me }} Remember-me
+        <div class="campo">
+            <label for="username">
+                <input class="text" type="text" name="username"  id="username" autocomplete="username" placeholder="Username" required>
             </label>
         </div>
-        <button type="submit">Login</button>
+        <div class="campo">
+            <label for="password">
+                <input class="text" type="password" name="password" id="password" placeholder="Password" required>
+            </label>
+        </div>
+        <div class="campo">
+            <label for="remember" class="check">
+                <input type="checkbox" id="checkbox" value="Remember-me"checked="checked">
+            </label>
+            <label class="remember"><strong>Remember me</strong></label>
+        </div>
+        <div class="campo">
+            <button class="button" type="submit">Enter</button>
+        </div>
+       
     </form>
 </main>
+
 {% endblock %}

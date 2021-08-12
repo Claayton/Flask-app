@@ -1,15 +1,72 @@
 @charset 'UTF8';
 
-div.main {
-    max-width: 600px;
-    background-color: aqua;
-    text-align: center;
+:root {
+    --color1: #5021FA;
+    --color2: #1D27DE;
+    --color3: #2B6CF5;
+    --color4: #1D8DDE;
+    --color5: #21D8FA;
 }
 
-div.login {
-    padding: 8px;
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    padding: 20px;
+    margin:auto;
+    margin-top: 100px;
+    text-align: center;
+    max-width: 600px;
+    height: auto;
+    height: auto;
+    background-color: var(--color2);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    border-radius: 8px;
+}
+
+#titulo {
+    color: white;
+    width: 100%;
+    font-size: 2.5em;
+    padding: 10px;
+}
+
+#username, #password, button {
+    border-radius: 5px;
+    height: 30px;
+    width: 65%;
+}
+
+.campo input, button {
+    padding: 0.2em;
+    margin: 0.3em;
+    text-align: center;
+    font-size: 1.2em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.remember {
+    color: white;
 }
 
 button {
-    width: 320px;
+    font-size: 1.2em;
+    border: 0;
+    margin-bottom: 1em;
+    border: white;
+    padding: 0.2em 0.6em;
+    width: 65%;
+    height: 30px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    color: white;
+    background-color: var(--color5);
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
 }
