@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}" rel="stylesheet">
+
+{% extends 'base.html' %}
+
+{% block title %}{{ super() }} - Login{% endblock %}
+
+{% block content %}
+
+<main>
+    <div>
+        <h2 id="titulo">Bem vindo ao MitM!</h2>
+    </div>
+        <div class="campohome">
+            <form action="/login">
+                    <button class="button" type="submit" >Login</button>
+            </form>
+            <form action="/register">
+                    <button class="button" type="submit">Register</button>
+            </form>
+        </div>
+       
+    </form>
+</main>
+
+{% endblock %}

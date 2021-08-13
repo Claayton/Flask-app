@@ -1,31 +1,29 @@
 from flask.templating import render_template
+from flask import redirect, url_for
 from app import app, db
 
 from app.models.tables import User
 from app.models.forms import LoginForm
 
 
-@app.route('/index')
+@app.route('/home')
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
                             
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        print(form.username.data)
-        print(form.password.data)
-    else:
-        print(form.errors)
-    return render_template('login.html',
-                            form=form)
-
+    return render_template('login.html')
 
 @app.route('/teste/<info>')
 @app.route('/teste', defaults={'info': None})
 def teste(info):
-    i = User('juliarizza', '1234', 'Julia Rizza', 'julia.rizza@gmail.com')
-    db.session.add(i)
-    db.session.commit()
     return 'ok'
+
+@app.route('/register')
+def register():
+    return render_template('register.html')

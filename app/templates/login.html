@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}" rel="stylesheet">
 
 {% extends 'base.html' %}
+
+{% block title %}{{ super() }} - Login{% endblock %}
 
 {% block content %}
 
@@ -26,7 +28,7 @@
             <label class="remember"><strong>Remember me</strong></label>
         </div>
         <div class="campo">
-            <button class="button" type="submit">Enter</button>
+            <button class="button" type="submit" >Enter</button>
         </div>
        
     </form>
