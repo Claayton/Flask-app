@@ -34,13 +34,24 @@ main {
 }
 
 #name, #lastname {
-    width: 30%;
+    width: 35.5%;
+    height: 30px;
 }
 
-#email, #password, #confirm-pasword{
+#email, #password, #confirm-password{
     height: 30px;
-    width: 65%;
+    width: 75%;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.493);
+}
+
+.camponame {
+    display: block;
+
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
 }
 
 .campo input, button {
@@ -51,15 +62,27 @@ main {
     border-radius: 8px;
 }
 
-.remember {
+.terms {
     color: white;
+}
+
+.campo a {
+    color: white;
+    text-decoration: underline;
+    
+}
+
+.campo a:hover {
+    color: darkblue;
+    text-decoration: none;
+    text-shadow: 1px 1px 10px white;
 }
 
 button {
     background-image: linear-gradient(to bottom, var(--color5), var(--color3));
     color: white;
     height: 30px;
-    width: 65%;
+    width: 75%;
     font-size: 1.2em;
     border: 0;
     margin-bottom: 1em;

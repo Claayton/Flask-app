@@ -11,13 +11,13 @@
         <h1 id="titulo">Register</h1>
     </div>
     <form action="" method="POST">
-        <fieldset class="campo">
-            <div class="campo">
+        <fieldset class="camponame">
+            <div style="display: inline;" class="campo">
                 <label for="name">
                     <input class="text" type="text" name="name"  id="name" autocomplete="given-name" placeholder="Name" required>
                 </label>
             </div>
-            <div>
+            <div style="display: inline;" class="campo">
                 <label for="lastname">
                     <input class="text" type="text" name="lastname"  id="name" autocomplete="family-name" placeholder="Last Name">
                 </label>
@@ -28,18 +28,16 @@
                 <input class="text" type="email" name="email"  id="email" autocomplete="email" placeholder="E-mail">
             </label>
         </div>
-        <fieldset class="campo">
-            <div class="campo">
-                <label for="password">
-                    <input class="text" type="password" name="password" id="password" placeholder="Password" required>
-                </label>
-            </div>
-            <div class="campo">
-                <label for="confirm-password">
-                    <input class="text" type="password" name="confirm-password" id="password" placeholder="Confirm-Password" required>
-                </label>
-            </div>
-        </fieldset>
+        <div class="campo">
+            <label for="password">
+                <input class="text" type="password" name="password" id="password" placeholder="Password" required>
+            </label>
+        </div>
+        <div class="campo">
+            <label for="confirm-password">
+                <input class="text" type="password" name="confirm-password" id="password" placeholder="Confirm-Password" required>
+            </label>
+        </div>
 
         <div class="campo">
             <label for="" class="terms">
