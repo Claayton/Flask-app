@@ -1,3 +1,4 @@
+from logging import NullHandler
 from flask.scaffold import F
 from app import db
 
@@ -5,23 +6,23 @@ from app import db
 class User(db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
-    name = db.Column(db.String)
-    email = db.Column(db.String, unique=True)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
 
     def __init__(self, username, password, name, email):
-        self.username = username
-        self.password = password
         self.name = name
         self.email = email
-
+        self.username = username
+        self.password = password
+        
     def __repr__(self):
         return f'<User {self.username}>'
 
 
-class Post(db.Model):
+"""class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -46,4 +47,4 @@ class Follow(db.Model):
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     user = db.relationship('User', foreign_keys=user_id)
-    follower = db.relationship('User', foreign_keys=follower_id)
+    follower = db.relationship('User', foreign_keys=follower_id)"""
