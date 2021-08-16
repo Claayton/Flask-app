@@ -1,6 +1,6 @@
 from logging import NullHandler
 from flask.scaffold import F
-from app import db
+from app import db, lm
 
 
 class User(db.Model):
@@ -12,7 +12,27 @@ class User(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, username, password, name, email):
+    # Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
+    @lm.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(selef):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+    def __init__(self, name, email, username, password):
         self.name = name
         self.email = email
         self.username = username
@@ -22,7 +42,7 @@ class User(db.Model):
         return f'<User {self.username}>'
 
 
-"""class Post(db.Model):
+class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -47,4 +67,4 @@ class Follow(db.Model):
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     user = db.relationship('User', foreign_keys=user_id)
-    follower = db.relationship('User', foreign_keys=follower_id)"""
+    follower = db.relationship('User', foreign_keys=follower_id)

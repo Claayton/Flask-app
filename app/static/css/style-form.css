@@ -74,3 +74,17 @@ button:hover {
 button:focus {
     box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
 }
+
+.check {
+    color: white;
+}
+
+.flash {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.flash ul {
+    list-style: none;
+}
