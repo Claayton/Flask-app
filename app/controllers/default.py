@@ -17,18 +17,19 @@ def about():
     return render_template('about.html')
                             
 @app.route('/login/', methods=['GET', 'POST'])
-@lm.user_loader
-def login(nothing):
+def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             login_user(user)
             flash('Logged in!')
-    else:
-        flash('Invalid Login!')
+        else:
+            flash('Invalid Login!')
     return render_template('login.html',
                             form=form)
+
+
 
 """
 # CREATE

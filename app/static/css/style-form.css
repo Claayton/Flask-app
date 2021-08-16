@@ -78,3 +78,13 @@ button:focus {
 .check {
     color: white;
 }
+
+.flash {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.flash ul {
+    list-style: none;
+}

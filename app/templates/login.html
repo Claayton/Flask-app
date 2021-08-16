@@ -30,6 +30,17 @@
         <div class="campo">
             <button class="button" type="submit" >Enter</button>
         </div>
+        <div class="flash">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+          </div>
        
     </form>
 </main>

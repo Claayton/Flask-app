@@ -1,6 +1,6 @@
 from logging import NullHandler
 from flask.scaffold import F
-from app import db
+from app import db, lm
 
 
 class User(db.Model):
@@ -11,6 +11,11 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
+
+    # Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
+    @lm.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
 
     @property
     def is_authenticated(self):
