@@ -29,6 +29,9 @@ def login():
     return render_template('login.html',
                             form=form)
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 
 """
@@ -75,8 +78,3 @@ def teste(info):
     db.session.delete(r)
     db.session.commit()
     return 'ok'"""
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
