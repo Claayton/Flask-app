@@ -38,7 +38,7 @@ main {
     height: 30px;
 }
 
-#email, #password, #confirm-password{
+#email, #password, #confirm-password, #username{
     height: 30px;
     width: 75%;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.493);
@@ -73,9 +73,7 @@ main {
 }
 
 .campo a:hover {
-    color: darkblue;
-    text-decoration: none;
-    text-shadow: 1px 1px 10px white;
+    color: red;
 }
 
 button {
@@ -100,4 +98,14 @@ button:hover {
 
 button:focus {
     box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
+}
+
+.flash {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.flash ul {
+    list-style: none;
 }

@@ -12,11 +12,6 @@ class User(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
 
-    # Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
-    @lm.user_loader
-    def load_user(user_id):
-        return User.query.get(user_id)
-
     @property
     def is_authenticated(self):
         return True
@@ -31,6 +26,11 @@ class User(db.Model):
 
     def get_id(self):
         return str(self.id)
+
+    # Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
+    @lm.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
 
     def __init__(self, name, email, username, password):
         self.name = name

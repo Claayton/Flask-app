@@ -4,7 +4,7 @@ from flask import redirect, url_for, flash
 from app import app, db, lm
 
 from app.models.tables import User
-from app.models.forms import LoginForm
+from app.models.forms import LoginForm, RegisterForm
 
 
 @app.route('/home')
@@ -20,6 +20,7 @@ def about():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        print('ok')
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             login_user(user)
@@ -29,9 +30,16 @@ def login():
     return render_template('login.html',
                             form=form)
 
-@app.route('/register')
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    form = RegisterForm()
+    if form.validate_on_submit():
+        i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, form.password.data)
+        db.session.add(i)
+        db.session.commit()
+        flash('Registered!')
+    return render_template('register.html', 
+                                form=form)
 
 
 """

@@ -2,7 +2,7 @@
 
 {% extends 'base.html' %}
 
-{% block title %}{{ super() }} - Login{% endblock %}
+{% block title %}{{ super() }} - Register{% endblock %}
 
 {% block content %}
 
@@ -11,43 +11,58 @@
         <h1 id="titulo">Register</h1>
     </div>
     <form action="" method="POST">
+        {{ form.csrf_token }}
         <fieldset class="camponame">
             <div style="display: inline;" class="campo">
                 <label for="name">
-                    <input class="text" type="text" name="name"  id="name" autocomplete="given-name" placeholder="Name" required>
+                    {{ form.name(id="name", placeholder="Name", autocomplete="given-name") }}
                 </label>
             </div>
             <div style="display: inline;" class="campo">
                 <label for="lastname">
-                    <input class="text" type="text" name="lastname"  id="name" autocomplete="family-name" placeholder="Last Name">
+                    {{ form.lastname(id="name", placeholder="Last Name", autocomplete="family-name") }}
                 </label>
             </div>
         </fieldset>
         <div class="campo">
             <label for="email">
-                <input class="text" type="email" name="email"  id="email" autocomplete="email" placeholder="E-mail">
+                {{ form.email(id="email", placeholder="E-mail", autocomplete="email") }}
+            </label>
+        </div>
+        <div class="campo">
+            <label for="username">
+                {{ form.username(id="username", placeholder="Username", autocomplete="username") }}
             </label>
         </div>
         <div class="campo">
             <label for="password">
-                <input class="text" type="password" name="password" id="password" placeholder="Password" required>
+                {{ form.password(id="password", placeholder="Password") }}
             </label>
         </div>
         <div class="campo">
             <label for="confirm-password">
-                <input class="text" type="password" name="confirm-password" id="password" placeholder="Confirm-Password" required>
+                {{ form.confirm(id="confirm-password", placeholder="Confirm-Password") }}
             </label>
         </div>
 
         <div class="campo">
-            <label for="" class="terms">
-                <input type="checkbox" id="terms" value="terms">
-            </label>
-            <label class="terms"><strong>I read and accept the <a href="#">terms of use</a></strong></label>
+            <label for="terms" class="terms">
+                {{ form.terms(id="terms") }}<strong>I read and accept the <a href="#">terms of use</a></strong>
         </div>
         <div class="campo">
-            <button class="button" type="submit" >Next</button>
+            <button class="button" type="submit" >Submit</button>
         </div>
+        <div class="flash">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+          </div>
        
     </form>
 </main>
