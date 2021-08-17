@@ -15,18 +15,27 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/ok')
+def ok():
+    return render_template('ok.html')
                             
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        print('ok')
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and user.password == form.password.data:
-            login_user(user)
-            flash('Logged in!')
-        else:
-            flash('Invalid Login!')
+    if User.is_authenticated:
+        return render_template('ok.html')
+    else:
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).first()
+            if user and user.password == form.password.data:
+                login_user(user)
+            else:
+                flash('Invalid Login!')
     return render_template('login.html',
                             form=form)
 
