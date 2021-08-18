@@ -1,6 +1,6 @@
 from flask.templating import render_template
-from flask_login import login_user
-from flask import redirect, url_for, flash
+from flask_login import login_user, logout_user
+from flask import redirect, url_for, flash, request
 from app import app, db, lm
 
 from app.models.tables import User
@@ -20,24 +20,33 @@ def about():
 def terms():
     return render_template('terms.html')
 
-@app.route('/ok')
-def ok():
-    return render_template('ok.html')
-                            
+@app.route('/online', methods=['GET', 'POST'])
+def online():
+    if request.method == 'POST':
+        print('disconect!')
+        return redirect(url_for('logout'))
+    return render_template('online.html')
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    if User.is_authenticated:
-        return render_template('ok.html')
-    else:
-        form = LoginForm()
-        if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
-            if user and user.password == form.password.data:
-                login_user(user)
-            else:
-                flash('Invalid Login!')
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and user.password == form.password.data:
+            login_user(user)
+            User.is_authenticated = True
+        else:
+            flash('Invalid Login!')
+        if User.is_authenticated:
+            return redirect(url_for('online'))
     return render_template('login.html',
                             form=form)
+
+@app.route('/logout/')
+def logout():
+    logout_user()
+    User.is_authenticated = False
+    return redirect(url_for('login'))
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():

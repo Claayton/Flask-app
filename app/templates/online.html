@@ -7,8 +7,8 @@
 {% block content %}
 
 <main>
-    <h1 style="size: 5em; color: green;">Deu Tudo certo graças a Deus!</h1>
-    <button>Disconect</button>
+    <h1 style="size: 5em; color: green;">You are Connected!</h1>
+    <a href="{{ url_for('logout') }}"><button action="/logout/">Disconect</button></a>
 </main>
 
 {% endblock %}
