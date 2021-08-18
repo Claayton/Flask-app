@@ -30,17 +30,29 @@ def online():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
+    # funciona mas não esta certo
+    if User.is_authenticated:
+        return redirect(url_for('online'))
+    elif form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             login_user(user)
+            # funciona mas não esta certo
             User.is_authenticated = True
         else:
             flash('Invalid Login!')
+        # funciona mas não esta certo
         if User.is_authenticated:
             return redirect(url_for('online'))
     return render_template('login.html',
                             form=form)
+
+
+# Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
+@lm.user_loader
+def load_user(user_id):
+    # funciona mas não esta certo
+    return User.query.get(user_id)
 
 @app.route('/logout/')
 def logout():
