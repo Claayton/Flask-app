@@ -19,4 +19,4 @@ lm.init_app(app)
 
 
 from app.models import tables, forms
-from app.controllers import login
+from app.controllers import login, home

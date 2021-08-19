@@ -21,7 +21,7 @@ class User(db.Model):
         return True
 
     @property
-    def is_anonymous(selef):
+    def is_anonymous(self):
         return False
 
     def get_id(self):

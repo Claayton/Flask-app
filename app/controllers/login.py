@@ -1,5 +1,5 @@
 from flask.templating import render_template
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from flask import redirect, url_for, flash, request
 from app import app, db, lm
 
@@ -7,57 +7,29 @@ from app.models.tables import User
 from app.models.forms import LoginForm, RegisterForm
 
 
-@app.route('/home')
-@app.route('/')
-def index():
-    return render_template('home.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/terms')
-def terms():
-    return render_template('terms.html')
-
-@app.route('/online', methods=['GET', 'POST'])
-def online():
-    if request.method == 'POST':
-        print('disconect!')
-        return redirect(url_for('logout'))
-    return render_template('online.html')
+@lm.user_loader
+def load_user(user):
+    return User.query.get(user)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    # funciona mas não esta certo
-    if User.is_authenticated:
-        return redirect(url_for('online'))
-    elif form.validate_on_submit():
+    if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             login_user(user)
-            # funciona mas não esta certo
-            User.is_authenticated = True
-        else:
-            flash('Invalid Login!')
-        # funciona mas não esta certo
-        if User.is_authenticated:
+            print('\033[32mLogado!\033[m')
             return redirect(url_for('online'))
+        else:
+            print('\033[31mInvalid Login!\033[m')
+            flash('Invalid Login!')
     return render_template('login.html',
                             form=form)
 
-
-# Não tenho certeza se este é o lugar dessa função, (não entendi muito bem oq ela faz)mas funcionou.
-@lm.user_loader
-def load_user(user_id):
-    # funciona mas não esta certo
-    return User.query.get(user_id)
-
-@app.route('/logout/')
+@app.route('/logout/', methods=['GET'])
 def logout():
     logout_user()
-    User.is_authenticated = False
+    print('voce foi desconectado burro')
     return redirect(url_for('login'))
 
 @app.route('/register/', methods=['GET', 'POST'])
