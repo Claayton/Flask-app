@@ -75,6 +75,17 @@ button:focus {
     box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
 }
 
+a {
+    color: white;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
 .check {
     color: white;
 }

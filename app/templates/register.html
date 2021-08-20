@@ -50,7 +50,8 @@
                 {{ form.terms(id="terms") }}<strong>I read and accept the <a href="/terms">terms of use</a></strong>
         </div>
         <div class="campo">
-            <button class="button" type="submit" >Submit</button>
+            <button class="button" type="submit" >Submit</button><br>
+            <a id="haveaccount" href="/login">I already have an account</a>
         </div>
         <div class="flash">
             {% with messages = get_flashed_messages() %}
