@@ -7,7 +7,7 @@
 {% block content %}
 
 <main>
-    <h1 style="size: 5em; color: green;">You are Connected!</h1>
+    <h1 style="size: 5em; color: green;">Hello {{ current_user.name }}!</h1>
     <form action="/logout">
         <button class="button" type="submit" >Disconect</button>
     </form>

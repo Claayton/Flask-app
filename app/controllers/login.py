@@ -1,6 +1,6 @@
 from flask.templating import render_template
 from flask_login import login_user, logout_user, login_required
-from flask import redirect, url_for, flash, request
+from flask import redirect, url_for, flash
 from app import app, db
 
 from app.models.tables import User
@@ -11,14 +11,17 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and user.password == form.password.data:
-            login_user(user)
-            print('\033[32mLogado!\033[m')
-            flash(f'Você está logado como {user.username}')
-            return redirect(url_for('online'))
+        if not user:
+            flash('Invalid Username!')
         else:
-            print('\033[31mInvalid Login!\033[m')
-            flash('Invalid Login!')
+            if user and user.password == form.password.data:
+                if form.remember_me.data:
+                    login_user(user, remember=True)
+                else:
+                    login_user(user)
+                return redirect(url_for('online'))
+            else:
+                flash('Invalid Password!')
     return render_template('login.html',
                             form=form)
 
@@ -26,7 +29,6 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('voce foi desconectado burro')
     return redirect(url_for('login'))
 
 @app.route('/register/', methods=['GET', 'POST'])
