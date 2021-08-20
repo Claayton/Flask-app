@@ -1,9 +1,13 @@
 from logging import NullHandler
+from flask_login import UserMixin
 from flask.scaffold import F
 from app import db, lm
 
+@lm.user_loader
+def load_user(user_id):
+    return User.query.filter_by(id=user_id).first()
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -11,21 +15,6 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-
-    @property
-    def is_authenticated(self):
-        return True
-
-    @property
-    def is_active(self):
-        return True
-
-    @property
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return str(self.id)
 
     def __init__(self, name, email, username, password):
         self.name = name

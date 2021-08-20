@@ -8,7 +8,9 @@
 
 <main>
     <h1 style="size: 5em; color: green;">You are Connected!</h1>
-    <a href="{{ url_for('logout') }}"><button action="/logout/">Disconect</button></a>
+    <form action="/logout">
+        <button class="button" type="submit" >Disconect</button>
+    </form>
 </main>
 
 {% endblock %}
