@@ -1,7 +1,7 @@
 from flask.templating import render_template
 from flask import redirect, url_for, flash, request
 from flask_login.utils import login_required
-from app import app, db, lm
+from app import app, lm
 
 from app.models.tables import User
 
@@ -23,9 +23,7 @@ def about():
 def terms():
     return render_template('terms.html')
 
-@app.route('/online', methods=['POST', 'GET'])
+@app.route('/online')
 @login_required
 def online():
-    if request.method == 'GET':
-        return redirect(url_for('logout'))
     return render_template('online.html')
