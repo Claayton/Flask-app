@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}" rel="stylesheet">
 
 {% extends 'base.html' %}
 
@@ -41,7 +41,8 @@
                 </label>
             </div>
             <div class="campo">
-                <button class="button" type="submit" >Enter</button>
+                <button class="button" type="submit" >Enter</button><br>
+                <a href="/register">I want to register</a>
             </div>
             <div class="flash">
                 {% with messages = get_flashed_messages() %}
