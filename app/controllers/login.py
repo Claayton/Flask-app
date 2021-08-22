@@ -16,7 +16,7 @@ def login():
                 login_user(user, remember=True)
             else:
                 login_user(user)
-            return redirect(url_for('online'))
+            return redirect(url_for('profile'))
         else:
             flash('Invalid Username or Password!')
     return render_template('login.html',

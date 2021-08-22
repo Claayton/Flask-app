@@ -23,7 +23,7 @@ def about():
 def terms():
     return render_template('terms.html')
 
-@app.route('/online')
+@app.route('/profile')
 @login_required
-def online():
-    return render_template('online.html')
+def profile():
+    return render_template('profile.html')

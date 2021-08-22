@@ -26,29 +26,29 @@ class User(db.Model, UserMixin):
         return f'<User {self.username}>'
 
 
-class Post(db.Model):
-    __tablename__ = 'posts'
+class ToDo(db.Model):
+    __tablename__ = 'todo'
 
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    task = db.Column(db.String(100))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', foreign_keys=user_id)
 
-    def __init__(self, content, user_id):
-        self.content = content
+    def __init__(self, task, user_id):
+        self.content = task
         self.user_id = user_id
 
     def __repr__(self):
-        return f'<Post {self.id}>'
+        return f'<Task {self.id}>'
 
 
-class Follow(db.Model):
-    __tablename__ = 'follow'
+class Friend(db.Model):
+    __tablename__ = 'friend'
 
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    friend_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', foreign_keys=user_id)
-    follower = db.relationship('User', foreign_keys=follower_id)
+    friend = db.relationship('User', foreign_keys=friend_id)

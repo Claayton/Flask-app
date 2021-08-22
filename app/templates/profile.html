@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-profile.css') }}" rel="stylesheet">
+
+{% extends 'base.html' %}
+
+{% block title %}{{ super() }} - Register{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="tabela">
+        <div class="cabecalho-tabela">
+            <h1 id="name">{{ current_user.name.title() }}</h1>
+            
+        </div>
+    </div>
+    <form action="/">
+        <button class="campo" id="task" type="add" >Adicionar Task</button>
+    </form>
+    <form action="/logout">
+        <button class="button" type="submit" >Disconect</button>
+    </form>
+</main>
+
+{% endblock %}
