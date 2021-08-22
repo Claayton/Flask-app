@@ -67,13 +67,13 @@ main {
 }
 
 .campo a {
-    color: white;
+    color: var(--color4);
     text-decoration: underline;
     
 }
 
 .campo a:hover {
-    color: red;
+    color: white;
 }
 
 button {

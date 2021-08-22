@@ -76,22 +76,25 @@ button:focus {
 }
 
 a {
-    color: white;
+    color: rgb(240, 73, 106);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     text-decoration: none;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
 
 a:hover {
-    color: black;
+    color: white;
     text-decoration: underline;
 }
 
 .check {
     color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
 }
 
 .flash {
     color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     width: 100%;
     text-align: center;
 }

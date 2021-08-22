@@ -1,7 +1,7 @@
 from flask.templating import render_template
 from flask_login import login_user, logout_user, login_required
 from flask import redirect, url_for, flash
-from app import app, db
+from app import app, db, bcpt
 
 from app.models.tables import User
 from app.models.forms import LoginForm, RegisterForm
@@ -11,17 +11,14 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if not user:
-            flash('Invalid Username!')
-        else:
-            if user and user.password == form.password.data:
-                if form.remember_me.data:
-                    login_user(user, remember=True)
-                else:
-                    login_user(user)
-                return redirect(url_for('online'))
+        if user and bcpt.check_password_hash(user.password, form.password.data):
+            if form.remember_me.data:
+                login_user(user, remember=True)
             else:
-                flash('Invalid Password!')
+                login_user(user)
+            return redirect(url_for('online'))
+        else:
+            flash('Invalid Username or Password!')
     return render_template('login.html',
                             form=form)
 
@@ -33,12 +30,25 @@ def logout():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
+    logout_user()
     form = RegisterForm()
-    if form.validate_on_submit():
-        i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, form.password.data)
-        db.session.add(i)
-        db.session.commit()
-        flash('Registered!')
+    user_name = User.query.filter_by(username=form.username.data).first()
+    user_email = User.query.filter_by(email=form.email.data).first()
+    if user_email:
+        flash('This Email is already being used!')
+    elif user_name:
+        flash('This Username is already being used!')
+    elif form.password.data != form.confirm.data:
+        flash('The passwords entered must be identical!')
+    elif not form.terms.data:
+        flash('You most accept the terms of use to register!')
+    else:
+        if form.validate_on_submit():
+            pw_hash = bcpt.generate_password_hash (form.password.data). decode ('utf-8')
+            i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, pw_hash)
+            db.session.add(i)
+            db.session.commit()
+            flash('Registered!')
     return render_template('register.html', 
                                 form=form)
 
