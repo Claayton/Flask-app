@@ -40,8 +40,6 @@ def register():
         flash('This Username is already being used!')
     elif form.password.data != form.confirm.data:
         flash('The passwords entered must be identical!')
-    elif not form.terms.data:
-        flash('You most accept the terms of use to register!')
     else:
         if form.validate_on_submit():
             pw_hash = bcpt.generate_password_hash (form.password.data). decode ('utf-8')

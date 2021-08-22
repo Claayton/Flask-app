@@ -66,13 +66,15 @@ main {
     color: white;
 }
 
-.campo a {
-    color: var(--color4);
+.campo #terms {
+    color: var(--color5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     text-decoration: underline;
+    transition-duration: 0.2s;
     
 }
 
-.campo a:hover {
+.campo #terms:hover {
     color: white;
 }
 
@@ -101,13 +103,14 @@ button:focus {
 }
 
 #haveaccount {
-    color: white;
+    color: var(--color5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     text-decoration: none;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
 
 #haveaccount:hover {
-    color: black;
+    color: white;
     text-decoration: underline;
 }
 

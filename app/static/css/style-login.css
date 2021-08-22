@@ -75,14 +75,14 @@ button:focus {
     box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
 }
 
-a {
-    color: rgb(240, 73, 106);
+#register {
+    color: var(--color5);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     text-decoration: none;
     transition-duration: 0.2s;
 }
 
-a:hover {
+#register:hover {
     color: white;
     text-decoration: underline;
 }
