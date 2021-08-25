@@ -6,11 +6,17 @@
 
 {% block content %}
 
-<main>
+<section class="perfil-left">
+    <h1 id="name">{{ current_user.name.title() }}</h1>
+</section>
+<section class="main">
+    <h1 id="name">{{ current_user.name.title() }}</h1>
     <div class="tabela">
         <div class="cabecalho-tabela">
-            <h1 id="name">{{ current_user.name.title() }}</h1>
-            
+            <h1>5/10</h1>
+        </div>
+        <div class="items">
+            <input type="checkbox">
         </div>
     </div>
     <form action="/">
@@ -19,6 +25,9 @@
     <form action="/logout">
         <button class="button" type="submit" >Disconect</button>
     </form>
-</main>
+</section>
+<section class="perfil-right">
+    <h1 id="name">{{ current_user.name.title() }}</h1>
+</section>
 
 {% endblock %}

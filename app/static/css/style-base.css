@@ -16,28 +16,23 @@
 body {
     background-color: #292a2d;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    margin: auto;
-    justify-content: center;
     width: 100%;
     height: auto;
 }
 
-header {
-    position: fixed;
+.header-main {
+    position: sticky;
     top:0;
-    text-align: left;
     background-color: #1d1e1f;
     width: 100%;
 }
 
-#h1base{
+#h1home{
     color: var(--color4);
     text-align: left;
     width: 99%;
     font-size: 2em;
     padding-left: 5px;
-    margin-bottom: -10px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
 }
 
@@ -45,15 +40,20 @@ header {
     text-decoration: none;
 }
 
-nav {
+.nav-bar ul{
+    position: absolute;
+    top: 0;
+    right: 0;
     width: auto;
-    text-align: right;
     padding: 10px;
-    margin-top: -38px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
 }
 
-nav > a{
+.nav-bar ul li {
+    display: inline;
+}
+
+.nav-bar > ul li a{
     color: whitesmoke;
     padding: 10px;
     border-radius: 5px;
@@ -62,7 +62,7 @@ nav > a{
     transition-duration: 0.5s; /*Tempinho de transição quando passa o mouse no link (animação)*/
 }
 
-nav a:hover{
+.nav-bar ul li a:hover{
     background-color: black;
     color:white;
 }

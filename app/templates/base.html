@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-base.css') }}" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <a href="/home" id="home"><h1 id="h1base">MitMirror</h1></a>
-      <nav>
-        <a href="/home">Home</a>
-        <a href="/about">About</a>
-        <a href="/login">Login</a>
+    <header class="header-main">
+      <a href="/home" id="home"><h1 id="h1home">MitMirror</h1></a>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
       </nav>
     </header>
 
