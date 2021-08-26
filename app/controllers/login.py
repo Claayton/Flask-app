@@ -22,6 +22,10 @@ def login():
     return render_template('login.html',
                             form=form)
 
+@app.route('/forgot-password/')
+def forgot_password():
+    return render_template('forgot-password.html')
+
 @app.route('/logout/')
 @login_required
 def logout():
