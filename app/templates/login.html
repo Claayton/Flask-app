@@ -45,23 +45,22 @@
                 <div class="campo">
                     <button class="button" type="submit" >Enter</button>
                     <p id="register">Don't have an accont? <a href="/register">Register!</a></p>
-                </div>
-                <div class="flash">
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            <ul>
-                            {% for message in messages %}
-                            <li>{{ message }}</li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                    {% endwith %}
-                  </div>
-        
+                </div>      
             </form>
         </div>
         {% endif %}
     </div>
 </main>
+<div id="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+  </div>
 
 {% endblock %}
