@@ -1,7 +1,7 @@
 from logging import NullHandler
 from flask_login import UserMixin
 from flask.scaffold import F
-from app import db, lm
+from app import db, lm, bcpt
 
 @lm.user_loader
 def load_user(user_id):
@@ -14,16 +14,22 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, name, email, username, password):
+    def __init__(self, name, email, username, password_hash):
         self.name = name
         self.email = email
         self.username = username
-        self.password = password
+        self.password_hash = password_hash
         
     def __repr__(self):
         return f'<User {self.username}>'
+
+    def hash_password(self, password):
+        self.password_hash = bcpt.generate_password_hash (password). decode ('utf-8')
+
+    def verify_password(self, password):
+        return bcpt.check_password_hash(self.password_hash, password)
 
 
 class ToDo(db.Model):

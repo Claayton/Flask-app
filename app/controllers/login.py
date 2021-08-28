@@ -11,7 +11,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and bcpt.check_password_hash(user.password, form.password.data):
+        if user and user.verify_password(form.password.data):
             if form.remember_me.data:
                 login_user(user, remember=True)
             else:
@@ -46,8 +46,8 @@ def register():
         flash('The passwords entered must be identical!')
     else:
         if form.validate_on_submit():
-            pw_hash = bcpt.generate_password_hash (form.password.data). decode ('utf-8')
-            i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, pw_hash)
+            i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, form.password.data)
+            i.hash_password(form.password.data)
             db.session.add(i)
             db.session.commit()
             flash('Registered!')
