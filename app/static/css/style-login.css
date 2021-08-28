@@ -6,27 +6,30 @@
     --color3: #2B6CF5;
     --color4: #1D8DDE;
     --color5: #21D8FA;
+    --color6: #292a2d;
+    --color7: #1d1e1f;
+    --color8: #eee;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
 
 body {
-    background-color: #292a2d;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color6);
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: auto;
 }
 
-main {
+#main {
     padding: 20px;
     margin:auto;
     margin-top: 100px;
     text-align: center;
     max-width: 600px;
-    height: auto;
     height: auto;
     background-image: linear-gradient(to bottom, var(--color3), var(--color2));
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -34,62 +37,137 @@ main {
     border-radius: 10px;
 }
 
-#titulo {
+.main-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#loged-user {
+    color: #eee;
+}
+
+#loged-user h2 {
+    text-transform: uppercase;
     color: white;
     width: 100%;
-    font-size: 2.5em;
+    font-size: 2.5rem;
     padding: 10px;
 }
 
-#username, #password{
+#loged-user p {
+    margin-top: 30px;
+}
+
+#loged-user button {
+    margin: 10px auto 20px auto;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, var(--color5), var(--color3));
+    color: #eee;
     height: 30px;
-    width: 65%;
+    width: 50%;
+    font-size: 1.2em;
+    border: 1px;
+    padding: 10px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.507);
+}
+
+#loged-user button:hover {
+    background-image: linear-gradient(to bottom, var(--color5), var(--color2));
+    cursor: pointer;
+}
+
+#login {
+    width: 70%;
+}
+
+#login h2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    font-size: 2.5rem;
+    padding: 10px;
+}
+
+#login h3 {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #eee;
+    padding: 0 10px;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#login .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: flex-start;
+}
+
+#login #username, #login #password{
+    height: 30px;
+    width: 100%;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.493);
 }
 
-.campo input, button {
-    padding: 0.2em;
-    margin: 0.3em;
+#login .campo input, .button {
+    padding: 10px;
+    margin-bottom: 10px;
     text-align: center;
     font-size: 1.2em;
     border-radius: 8px;
 }
 
-.remember {
+#login .remember {
     color: white;
 }
 
-button {
+.button {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: linear-gradient(to bottom, var(--color5), var(--color3));
-    color: white;
+    color: #eee;
     height: 30px;
-    width: 65%;
+    width: 100%;
     font-size: 1.2em;
-    border: 0;
-    margin-bottom: 1em;
-    border: white;
-    padding: 0.2em 0.6em;
+    border: 1px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.507);
-    transition-duration: 0.5s;
 }
 
-button:hover {
-    width: 70%;
+.button:hover {
+    background-image: linear-gradient(to bottom, var(--color5), var(--color2));
+    cursor: pointer;
 }
 
-button:focus {
+.button:focus {
     box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
 }
 
 #forgot-password {
-    color: var(--color5);
+    color: #eee;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     transition: all 300ms ease;
 }
 
 #forgot-password:hover {
-    color: white;
+    color: var(--color5);
     text-decoration: none;
 }
 
@@ -101,19 +179,21 @@ button:focus {
 }
 
 #register a {
-    color: var(--color5);
+    color: #eee;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     transition: all 300ms ease;
 }
 
 #register a:hover {
-    color: white;
+    color: var(--color5);
     text-decoration: none;
 }
 
 .check {
     color: white;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    letter-spacing: 1px;
+    margin-top: 10px;
 }
 
 .flash {

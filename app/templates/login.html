@@ -6,60 +6,62 @@
 
 {% block content %}
 
-<main>
-    {% if current_user.name %}
-
-    <div>
-        <h1>{{ current_user.name }}</h1>
-        <p>Este usuáiro já está logado!</p>
-        <form action="/logout">
-            <button class="button" type="submit" >Disconect</button>
-        </form>
-    </div>
-
-    {% else %}
-    
-    <div>
-        <div>
-            <h2 id="titulo">Login</h2>
+<main id="main">
+    <div class="main-container">
+        {% if current_user.name %}
+        <div id="loged-user">
+            <h2>{{ current_user.name }}</h2>
+            <p>Este usuáiro já está logado!</p>
+            <form action="/logout">
+                <button class="button" type="submit" >Disconect</button>
+            </form>
         </div>
-        <form action="" method="POST">
-            {{ form.csrf_token }}
-            <div class="campo">
-                <label for="username">
-                    {{ form.username(id="username", placeholder="Username") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="password">
-                    {{ form.password(id="password", placeholder="Password") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="remember" class="check">
-                    {{ form.remember_me(id="checkbox") }}<strong>Keep me Connected</strong>
-                </label>
-            </div>
-            <div class="campo">
-                <button class="button" type="submit" >Enter</button><br>
-                <a id="forgot-password" href="/forgot-password">I forgot my password</a><br>
-                <p id="register">Don't have an accont? <a href="/register">Register!</a></p>
-            </div>
-            <div class="flash">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul>
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
-              </div>
+        {% else %}
         
-        </form>
+        <div id="login">
+            <h2>Login</h2>
+            <form action="" method="POST">
+                {{ form.csrf_token }}
+                <div class="campo">
+                    <h3>Username</h3>
+                    <label for="username">
+                        {{ form.username(id="username", placeholder="Enter your username here") }}
+                    </label>
+                </div>
+                <div class="campo">
+                    <div class="password-container">
+                        <h3>Password</h3>
+                        <h3><a id="forgot-password" href="/forgot-password">I forgot my password</a></h3>
+                    </div>
+                    <label for="password">
+                        {{ form.password(id="password", placeholder="Enter your password here") }}
+                    </label>
+                </div>
+                <div class="campo">
+                    <label for="remember" class="check">
+                        {{ form.remember_me(id="checkbox") }}<strong> Keep me Connected</strong>
+                    </label>
+                </div>
+                <div class="campo">
+                    <button class="button" type="submit" >Enter</button>
+                    <p id="register">Don't have an accont? <a href="/register">Register!</a></p>
+                </div>
+                <div class="flash">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                  </div>
+        
+            </form>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </main>
 
 {% endblock %}
