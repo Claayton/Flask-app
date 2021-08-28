@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-home.css') }}" rel="stylesheet">
 
 {% extends 'base.html' %}
 
@@ -6,20 +6,22 @@
 
 {% block content %}
 
-<main>
-    <div>
-        <h2 id="titulo">Bem vindo ao MitMirror!</h2>
-    </div>
-        <div class="campohome">
-            <form action="/login">
-                    <button class="button" type="submit" >Login</button>
-            </form>
-            <form action="/register">
-                    <button class="button" type="submit">I want to register</button>
-            </form>
+<main id="main">
+    <div class="main-container">
+        <div>
+            <h2 id="titulo">Bem vindo ao Meu Site!</h2>
         </div>
-       
-    </form>
+            <div class="campohome">
+                <form action="/login">
+                        <button class="button" type="submit" >Login</button>
+                </form>
+                <form action="/register">
+                        <button class="button" type="submit">I want to register</button>
+                </form>
+            </div>
+        
+        </form>
+    </div>
 </main>
 
 {% endblock %}
