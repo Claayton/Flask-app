@@ -16,6 +16,7 @@
                 <button class="button" type="submit" >Disconect</button>
             </form>
         </div>
+
         {% else %}
         
         <div id="login">
@@ -29,18 +30,16 @@
                     </label>
                 </div>
                 <div class="campo">
-                    <div class="password-container">
-                        <h3>Password</h3>
-                        <h3><a id="forgot-password" href="/forgot-password">I forgot my password</a></h3>
-                    </div>
+                    <h3>Password</h3>
                     <label for="password">
                         {{ form.password(id="password", placeholder="Enter your password here") }}
                     </label>
-                </div>
-                <div class="campo">
-                    <label for="remember" class="check">
-                        {{ form.remember_me(id="checkbox") }}<strong> Keep me Connected</strong>
-                    </label>
+                    <div class="forgot">
+                        <label for="remember" class="check">
+                            {{ form.remember_me(id="checkbox") }}<strong> Keep me signed in</strong>
+                        </label>
+                        <h3><a id="forgot-password" href="/forgot-password">I forgot my password</a></h3>
+                    </div>
                 </div>
                 <div class="campo">
                     <button class="button" type="submit" >Enter</button>
@@ -61,6 +60,6 @@
             </ul>
         {% endif %}
     {% endwith %}
-  </div>
+</div>
 
 {% endblock %}

@@ -6,28 +6,38 @@
 
 {% block content %}
 
-<section class="perfil-left">
-    <h1 id="name">{{ current_user.name.title() }}</h1>
-</section>
-<section class="main">
-    <h1 id="name">{{ current_user.name.title() }}</h1>
-    <div class="tabela">
-        <div class="cabecalho-tabela">
-            <h1>5/10</h1>
-        </div>
-        <div class="items">
-            <input type="checkbox">
-        </div>
+<main class="main">
+    <div id="column1-container">
+        <section id="perfil">
+            <img src="{{ url_for('static', filename='img/perfil-teste.jpeg') }}" alt="image-profile">
+            <strong>{{ current_user.name.title() }}</strong>
+            <em>@{{ current_user.username.title() }}</em>
+        </section>
     </div>
-    <form action="/">
-        <button class="campo" id="task" type="add" >Adicionar Task</button>
-    </form>
-    <form action="/logout">
-        <button class="button" type="submit" >Disconect</button>
-    </form>
-</section>
-<section class="perfil-right">
-    <h1 id="name">{{ current_user.name.title() }}</h1>
-</section>
+    <div id="column2-container">
+        <section id="conteudo">
+            <h1>Conteúdo</h1>
+            <div class="tabela">
+                <div class="cabecalho-tabela">
+                    <h1>5/10</h1>
+                </div>
+                <div class="items">
+                    <input type="checkbox">
+                </div>
+            </div>
+            <form action="/">
+                <button class="campo" id="task" type="add" >Adicionar Task</button>
+            </form>
+            <form action="/logout">
+                <button class="button" type="submit" >Disconect</button>
+            </form>
+        </section>
+    </div>
+    <div id="column3-container">
+        <section id="ad">
+            <h1>Aqui vai um add</h1>
+        </section>
+    </div>
+</main>
 
 {% endblock %}

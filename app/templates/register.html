@@ -6,78 +6,74 @@
 
 {% block content %}
 
-<main>
-    {% if current_user.name %}
+<main id="main">
+    <div class="main-container">
 
-    <div>
-        <h1>{{ current_user.name }}</h1>
-        <p>Este usuáiro já está logado!</p>
-        <form action="/register">
-            <button class="button" type="submit" >Disconect</button>
-        </form>
-    </div>
-
-    {% else %}
-    <div>
-        <div>
-            <h1 id="titulo">Register</h1>
-        </div>
-        <form action="" method="POST">
-            {{ form.csrf_token }}
-            <fieldset class="camponame">
-                <div style="display: inline;" class="campo">
-                    <label for="name">
-                        {{ form.name(id="name", placeholder="Name", autocomplete="given-name") }}
+        <div id="register">
+            <h2>Register</h2>
+            <form action="" method="POST">
+                {{ form.csrf_token }}
+                <fieldset class="camponame">
+                    <div style="display: inline;" class="campo">
+                        <h3>Name</h3>
+                        <label for="name">
+                            {{ form.name(id="name", placeholder="Name", autocomplete="given-name") }}
+                        </label>
+                    </div>
+                    <div style="display: inline;" class="campo">
+                        <h3>Last Name</h3>
+                        <label for="lastname">
+                            {{ form.lastname(id="name", placeholder="Last Name", autocomplete="family-name") }}
+                        </label>
+                    </div>
+                </fieldset>
+                <div class="campo">
+                    <h3>Email</h3>
+                    <label for="email">
+                        {{ form.email(id="email", placeholder="E-mail", autocomplete="email") }}
                     </label>
                 </div>
-                <div style="display: inline;" class="campo">
-                    <label for="lastname">
-                        {{ form.lastname(id="name", placeholder="Last Name", autocomplete="family-name") }}
+                <div class="campo">
+                    <h3>Username</h3>
+                    <label for="username">
+                        {{ form.username(id="username", placeholder="Username", autocomplete="username") }}
                     </label>
                 </div>
-            </fieldset>
-            <div class="campo">
-                <label for="email">
-                    {{ form.email(id="email", placeholder="E-mail", autocomplete="email") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="username">
-                    {{ form.username(id="username", placeholder="Username", autocomplete="username") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="password">
-                    {{ form.password(id="password", placeholder="Password") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="confirm-password">
-                    {{ form.confirm(id="confirm-password", placeholder="Confirm-Password") }}
-                </label>
-            </div>
-            <div class="campo">
-                <label for="terms" class="terms">
-                    {{ form.terms(id="terms") }}<strong>I read and accept the <a id="terms" href="/terms" target="_blank">terms of use</a></strong>
-            </div>
-            <div class="campo">
-                <button class="button" type="submit" >Submit</button><br>
-                <a id="haveaccount" href="/login">I already have an account</a>
-            </div>
-            <div class="flash">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul>
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
-              </div>
-        </form>
+                <div class="campo">
+                    <h3>Password</h3>
+                    <label for="password">
+                        {{ form.password(id="password", placeholder="Password") }}
+                    </label>
+                </div>
+                <div class="campo">
+                    <h3>Confirm-Password</h3>
+                    <label for="confirm-password">
+                        {{ form.confirm(id="confirm-password", placeholder="Confirm-Password") }}
+                    </label>
+                </div>
+                <div class="campo">
+                    <label for="terms" class="terms">
+                        {{ form.terms(id="terms") }}<strong> I read and accept the <a href="/terms" target="_blank">terms of use</a></strong>
+                    </label>
+                </div>
+                <div class="campo">
+                    <button class="button" type="submit" >Submit</button>
+                    <p id="haveaccount">Already have an account? <a href="/login">Login</a></p>
+                </div>
+            </form>
+        </div>        
     </div>
-    {% endif %}
 </main>
-
+<div id="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+        
 {% endblock %}

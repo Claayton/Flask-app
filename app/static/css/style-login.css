@@ -105,11 +105,6 @@ body {
     padding: 0 10px;
 }
 
-.password-container {
-    display: flex;
-    justify-content: space-between;
-}
-
 #login .campo {
     display: flex;
     flex-direction: column;
@@ -131,8 +126,17 @@ body {
     border-radius: 8px;
 }
 
-#login .remember {
+.forgot {
+    display: flex;
+    justify-content: space-between;
+    margin: -8px;
+}
+
+.check {
     color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    letter-spacing: 1px;
+    margin: 0 0 10px 10px;
 }
 
 .button {
@@ -187,13 +191,6 @@ body {
 #register a:hover {
     color: var(--color5);
     text-decoration: none;
-}
-
-.check {
-    color: white;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
-    letter-spacing: 1px;
-    margin-top: 10px;
 }
 
 #flash {

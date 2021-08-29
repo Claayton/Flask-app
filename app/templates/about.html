@@ -3,7 +3,27 @@
 {% block title %}{{ super() }} - Index{% endblock %}
 
 {% block content %}
+<style>
 
-<h2 style="color: white; margin-top: 200px; text-align: center;">Este site esta em desenvolvimento, por isso tenha paciência!</h2>
+    body {
+        height: 500px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    h2 {
+        color: #eee;
+        font-size: 2rem;
+    }
+</style>
+
+<div class="main">
+    <h2>Este site esta em desenvolvimento, por isso tenha paciência!</h2>
+</div>
 
 {% endblock %}

@@ -6,50 +6,98 @@
     --color3: #2B6CF5;
     --color4: #1D8DDE;
     --color5: #21D8FA;
+    --color6: #292a2d;
+    --color7: #1d1e1f;
+    --color8: #eee;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
 
 body {
-    background-color: #292a2d;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color6);
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: auto;
-    margin-top: -50px;
-}
-
-.perfil-left {
-    display: inline-block;
-    border-radius: 10px;
-    padding-top: 20px;
-    margin-top: 100px;
-    width: 300px;
-    height: 100%;
-    justify-content: left;
-    background-color: cadetblue;
 }
 
 .main {
-    display: inline-flex;
-    border-radius: 10px;
-    padding-top: 20px;
-    margin-top: -100px;
-    width: 300px;
-    height: auto;
-    justify-content: center;
-    background-color: cadetblue;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
 }
 
-.perfil-right {
-    display: inline-block;
-    border-radius: 10px;
-    padding-top: 20px;
-    margin-top: 100px;
-    width: 300px;
+#column1-container {
+    width: 20%;
     height: 100%;
-    justify-content: right;
-    background-color: cadetblue;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#column1-container #perfil {
+    background: var(--color7);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #eee;
+}
+
+#column1-container #perfil img {
+    width: 50%;
+    height: auto;
+    margin: 10px;
+    border: 3px solid #eee;
+    border-radius: 15px;
+}
+
+#column2-container {
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#column2-container #conteudo {
+    padding: 20px;
+    margin:auto;
+    text-align: center;
+    background-image: linear-gradient(to bottom, var(--color3), var(--color2));
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    border-radius: 10px;
+
+    width: 90%;
+    min-height: 85%;
+    height: auto;
+}
+
+#column3-container {
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#column3-container #ad {
+    background: var(--color7);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    color: #eee;
 }
