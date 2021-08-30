@@ -1,4 +1,5 @@
 @charset 'UTF8';
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Staatliches&display=swap');
 
 :root {
     --color1: #5021FA;
@@ -53,35 +54,113 @@ body {
     color: #eee;
 }
 
-#column1-container #perfil img {
-    width: 50%;
-    height: auto;
+#column1-container #perfil .profile-img {
+    width: 65%;
+    height: 30%;
     margin: 10px;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
     border: 3px solid #eee;
     border-radius: 15px;
 }
+    
 
 #column2-container {
     width: 60%;
     height: 100%;
     padding: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.add-task {
+    display: flex;
+    
+    width: 59%;
+    height: auto;
+    border-radius: 5px;
+
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.add-task #task {
+    font-size: 2rem;
+    width: 80%;
+}
+
+.add-task .button {
+    border-radius: 5px;
+    width: 20%;
+}
+
 #column2-container #conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     margin:auto;
     text-align: center;
     background-image: linear-gradient(to bottom, var(--color3), var(--color2));
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
     border-radius: 10px;
 
     width: 90%;
     min-height: 85%;
     height: auto;
+}
+
+#column2-container #conteudo .tabela {
+    width: 70%;
+}
+
+#column2-container #conteudo h2{
+    color: #eee;
+    font-size: 2rem;
+    font-family: 'Fjalla One', sans-serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to bottom, var(--color2), var(--color3));
+    border: 2px solid #fff;
+    border-radius: px;
+}
+
+#column2-container #conteudo .items {
+    width: 100%;
+    height: auto;
+    background: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.item, button{
+    padding: 10px 0;
+    border: 1px solid #fff;
+    border-radius: 5px;
+
+    font-size: 1.5em;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.task {
+    background: cornflowerblue;
+    width: 100%;
+}
+
+.task:hover{
+    background: darkgreen;
+}
+
+.button {
+    background: cornflowerblue;
+    width: 100%;
 }
 
 #column3-container {

@@ -1,14 +1,11 @@
 from flask.templating import render_template
-from flask import redirect, url_for, flash, request
-from flask_login.utils import login_required
-from app import app, lm
+from flask import redirect, url_for, flash
+from flask_login.utils import login_required, current_user
 
-from app.models.tables import User
+from app import app, db
 
-
-@lm.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+from app.models.tables import User, Tasks
+from app.models.forms import AddTaskForm
 
 @app.route('/home')
 @app.route('/')
@@ -23,7 +20,19 @@ def about():
 def terms():
     return render_template('terms.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-    return render_template('profile.html')
+    form = AddTaskForm()
+    user_task = Tasks.query.filter_by(task=form.task.data).first()
+    if user_task:
+        flash('This Task already exist!')
+    else:
+        if form.validate_on_submit():
+            t = Tasks('id', current_user.id)
+            db.session.add(t)
+            db.session.commit()
+            flash('Add!')
+            return redirect(url_for('profile'))
+    return render_template('profile.html',
+                            form=form)

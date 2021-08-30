@@ -32,11 +32,11 @@ class User(db.Model, UserMixin):
         return bcpt.check_password_hash(self.password_hash, password)
 
 
-class ToDo(db.Model):
-    __tablename__ = 'todo'
+class Tasks(db.Model):
+    __tablename__ = 'tasks'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    task = db.Column(db.String(100))
+    task = db.Column(db.String(100), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', foreign_keys=user_id)

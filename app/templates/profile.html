@@ -9,28 +9,44 @@
 <main class="main">
     <div id="column1-container">
         <section id="perfil">
-            <img src="{{ url_for('static', filename='img/perfil-teste.jpeg') }}" alt="image-profile">
+            <div class="profile-img">
+                <img src="https://previews.dropbox.com/p/thumb/ABS7eCRZiN1iC7AuWM3wmPzqtxkSQb8q9QeSuBakqFhLhlIMGxStM89lfMEYLVB-IM5MxtrclH036UqbKuIrOgSE9hrZZCy2FYS63dpUiTrLjOFsk3R-zhL7C6S42dO6WpibBIk8sZXux5X2hYlRJYvHsy5icOOvVGoJsqYOHE06nkcZ6tn8-zk-GP09U9dZZk2Br_G2uKCw0AJm0vwVIimCsqm-SUUPUnJwa0f67BHkjT1yoImbDyrUCj1VzLKnj_CkjpTYTJ2v4GlqnB44WFf1DaJM0FskvsJZc_2NHK8WOeGwnyZSIGYzgHhExc1Iaiz6D9NWAf_Zs7aKhMfeYuPPcYjj2TBY5Ei0dOGubdKyfQ/p.jpeg?fv_content=true&size_mode=5" alt="image-profile">
+            </div>
             <strong>{{ current_user.name.title() }}</strong>
             <em>@{{ current_user.username.title() }}</em>
+            <strong>5/10</strong>
         </section>
     </div>
     <div id="column2-container">
+        <form action="" method="POST" class="add-task">
+            {{ form.csrf_token }}
+            {{ form.task(id="task") }}
+            <button class="button" type="submit">add</button>
+        </form>
         <section id="conteudo">
-            <h1>Conteúdo</h1>
             <div class="tabela">
-                <div class="cabecalho-tabela">
-                    <h1>5/10</h1>
-                </div>
+                <h2>Myts of the day!</h2>
                 <div class="items">
-                    <input type="checkbox">
+                    <form action="#">
+                        <button class="task">Margarina</button>
+                    </form>
+                    <form action="#">
+                        <button class="task">Margarina</button>
+                    </form>
+                    <form action="#">
+                        <button class="task">Margarina</button>
+                    </form>
+                    <form action="#">
+                        <button class="task">Margarina</button>
+                    </form>
+                    <form action="#">
+                        <button class="task">Margarina</button>
+                    </form>
+                    <form action="/logout">
+                        <button class="button" type="submit">Disconect</button>
+                    </form>
                 </div>
             </div>
-            <form action="/">
-                <button class="campo" id="task" type="add" >Adicionar Task</button>
-            </form>
-            <form action="/logout">
-                <button class="button" type="submit" >Disconect</button>
-            </form>
         </section>
     </div>
     <div id="column3-container">

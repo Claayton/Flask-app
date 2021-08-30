@@ -17,3 +17,7 @@ class RegisterForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired()])
     confirm = PasswordField('password', validators=[InputRequired()])
     terms = BooleanField('terms', validators=[InputRequired()])
+
+class AddTaskForm(FlaskForm):
+    task = StringField('task', validators=[InputRequired()])
+    

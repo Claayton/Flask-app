@@ -1,7 +1,8 @@
 from flask.templating import render_template
-from flask_login import login_user, logout_user, login_required
 from flask import redirect, url_for, flash
-from app import app, db, bcpt
+from flask_login import login_user, logout_user, login_required
+
+from app import app, db
 
 from app.models.tables import User
 from app.models.forms import LoginForm, RegisterForm
