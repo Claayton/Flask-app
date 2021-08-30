@@ -16,7 +16,9 @@ A função de Login recebe os dados enviados pelo usuário, compara com os dados
 ![Tela de Login](https://user-images.githubusercontent.com/76628101/131269921-7d292e37-8009-4a42-bcae-2c92a424cf24.png)
 
 Assim que o usuário cadastrado efetua o login, é direcionado para o seu perfil, (página que ainda está em desenvolvimento), onde ele podera ver algumas informações, editar alguns dados, manipular suas listas de afazeres e objetivos, além de poder interagir com amigos que também estejam utilizando a aplicação.
-![Tela de perfil](https://user-images.githubusercontent.com/76628101/131270211-38ff02f3-73c0-4158-878c-0cf3d35e215e.png)
+![perfil](https://user-images.githubusercontent.com/76628101/131374718-79194f13-23a2-4241-8233-a1c74bd54476.png)
 
 
-O projeto esta caminhando aos poucos, e inicialmente tem objetivos acadêmicos.
+
+
+O projeto esta caminhando aos poucos, e inicialmente tem objetivos acadêmicos, focando principalmente no back-end, a parte de front-end é temporária e vai melhorar futuramente, creio que é melhor explorar uma coisa de cada vez para absorver o conhecimento e aprendizado.
