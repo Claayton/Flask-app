@@ -26,22 +26,22 @@
         <section id="conteudo">
             <div class="tabela">
                 <h2>Myts of the day!</h2>
+                <div class="taskdb">
+                    {% with messages = task_message %}
+                        {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <div class="items">
+                                <form action="#">
+                                    <button class="task"><li>{{ message.task }}</li></button>
+                                </form>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
                 <div class="items">
-                    <form action="#">
-                        <button class="task">Margarina</button>
-                    </form>
-                    <form action="#">
-                        <button class="task">Margarina</button>
-                    </form>
-                    <form action="#">
-                        <button class="task">Margarina</button>
-                    </form>
-                    <form action="#">
-                        <button class="task">Margarina</button>
-                    </form>
-                    <form action="#">
-                        <button class="task">Margarina</button>
-                    </form>
                     <form action="/logout">
                         <button class="button" type="submit">Disconect</button>
                     </form>
@@ -55,5 +55,16 @@
         </section>
     </div>
 </main>
+<div id="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
 
 {% endblock %}

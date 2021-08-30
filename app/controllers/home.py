@@ -23,16 +23,18 @@ def terms():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
+    # Parte que le as task do db:
+    user_task_all = Tasks.query.filter_by(user_id=current_user.id).all()
+
+    # Parte que adicona tasks no db:
     form = AddTaskForm()
     user_task = Tasks.query.filter_by(task=form.task.data).first()
     if user_task:
         flash('This Task already exist!')
-    else:
-        if form.validate_on_submit():
-            t = Tasks('id', current_user.id)
-            db.session.add(t)
-            db.session.commit()
-            flash('Add!')
-            return redirect(url_for('profile'))
+    if form.validate_on_submit():
+        ct = Tasks(form.task.data, current_user.id)
+        db.session.add(ct)
+        db.session.commit()
+        flash('Add!')
     return render_template('profile.html',
-                            form=form)
+                            form=form, task_message=user_task_all)
