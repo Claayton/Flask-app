@@ -15,36 +15,34 @@
             <strong>{{ current_user.name.title() }}</strong>
             <em>@{{ current_user.username.title() }}</em>
             <strong>5/10</strong>
+            <div class="disc">
+                <form action="/logout">
+                    <button class="Disconect" type="submit">Disconect</button>
+                </form>
+            </div>
         </section>
     </div>
     <div id="column2-container">
         <form action="" method="POST" class="add-task">
             {{ form.csrf_token }}
-            {{ form.task(id="task") }}
+            {{ form.task(id="task", placeholder="Add tasks here") }}
             <button class="button" type="submit">add</button>
         </form>
         <section id="conteudo">
             <div class="tabela">
                 <h2>Myts of the day!</h2>
-                <div class="taskdb">
+                <div class="task-items">
                     {% with messages = task_message %}
                         {% if messages %}
                         <ul>
                             {% for message in messages %}
-                            <div class="items">
-                                <form action="#">
-                                    <button class="task"><li>{{ message.task }}</li></button>
+                                <form action="#" class="item">
+                                    <li>{{ message.task }}</li><button class="del-button" type="submit">Delete</button>
                                 </form>
-                            </div>
                             {% endfor %}
                         </ul>
                         {% endif %}
                     {% endwith %}
-                </div>
-                <div class="items">
-                    <form action="/logout">
-                        <button class="button" type="submit">Disconect</button>
-                    </form>
                 </div>
             </div>
         </section>
