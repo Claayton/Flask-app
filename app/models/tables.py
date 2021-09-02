@@ -2,6 +2,7 @@ from logging import NullHandler
 from flask_login import UserMixin
 from flask.scaffold import F
 from app import db, lm, bcpt
+from datetime import datetime
 
 @lm.user_loader
 def load_user(user_id):
@@ -16,11 +17,26 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, name, email, username, password_hash):
+    secondary_id = db.Column(db.Integer, nullable=False)
+    is_staff = db.Column(db.Boolean, nullable=False)
+    is_active_user = db.Column(db.Boolean, nullable=False) # Configurar 
+    last_login = db.Column(db.DateTime, nullable=False)
+    date_joined = db.Column(db.DateTime, nullable=False)
+
+
+    def __init__(self, name, email, username, password_hash, date_joined):
+
         self.name = name
         self.email = email
         self.username = username
         self.password_hash = password_hash
+
+        self.secondary_id = 0 # Configurar furturamente
+        self.is_staff = False
+        self.is_active_user = False # Configurar futuramente
+        self.last_login = self.login_time() # Configurar futuramente
+        self.date_joined = date_joined
+
         
     def __repr__(self):
         return f'<User {self.username}>'
@@ -30,6 +46,13 @@ class User(db.Model, UserMixin):
 
     def verify_password(self, password):
         return bcpt.check_password_hash(self.password_hash, password)
+
+    def create_secundary_id(self):
+        return self.id * self.id
+
+    def login_time(self):
+        return datetime.today()
+    
 
 
 class Tasks(db.Model):

@@ -35,6 +35,8 @@ def logout():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
+    from datetime import datetime
+
     logout_user()
     form = RegisterForm()
     user_name = User.query.filter_by(username=form.username.data).first()
@@ -47,8 +49,10 @@ def register():
         flash('The passwords entered must be identical!')
     else:
         if form.validate_on_submit():
-            i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, form.password.data)
+            print(f'\033[32m{datetime.today()}\033[m')
+            i = User(f'{form.name.data} {form.lastname.data}', form.email.data, form.username.data, form.password.data, datetime.today())
             i.hash_password(form.password.data)
+            print(f'\033[31m{i.date_joined}\033[m')
             db.session.add(i)
             db.session.commit()
             flash('Registered!')
