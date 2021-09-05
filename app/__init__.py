@@ -23,3 +23,4 @@ bcpt = Bcrypt(app)
 
 from app.models import tables, forms
 from app.controllers import login, home
+
