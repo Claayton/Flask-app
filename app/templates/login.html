@@ -1,3 +1,5 @@
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style-login.css') }}" rel="stylesheet">
 
 {% extends 'base.html' %}
@@ -7,49 +9,63 @@
 {% block content %}
 
 <main id="main">
-    <div class="main-container">
-        {% if current_user.name %}
-        <div id="loged-user">
+    {% if current_user.name %}
+    <div id="loged-user">
+        <div class="profile-img">
             <h2>{{ current_user.name }}</h2>
-            <p>Este usuáiro já está logado!</p>
-            <form action="/logout">
-                <button class="button" type="submit" >Disconect</button>
-            </form>
+            <img src="https://previews.dropbox.com/p/thumb/ABS7eCRZiN1iC7AuWM3wmPzqtxkSQb8q9QeSuBakqFhLhlIMGxStM89lfMEYLVB-IM5MxtrclH036UqbKuIrOgSE9hrZZCy2FYS63dpUiTrLjOFsk3R-zhL7C6S42dO6WpibBIk8sZXux5X2hYlRJYvHsy5icOOvVGoJsqYOHE06nkcZ6tn8-zk-GP09U9dZZk2Br_G2uKCw0AJm0vwVIimCsqm-SUUPUnJwa0f67BHkjT1yoImbDyrUCj1VzLKnj_CkjpTYTJ2v4GlqnB44WFf1DaJM0FskvsJZc_2NHK8WOeGwnyZSIGYzgHhExc1Iaiz6D9NWAf_Zs7aKhMfeYuPPcYjj2TBY5Ei0dOGubdKyfQ/p.jpeg?fv_content=true&size_mode=5" alt="image-profile">
         </div>
+        <p>Logged in user!</p>
+        <form action="/logout">
+            <button class="btn" type="submit" >Disconect</button>
+        </form>
+    </div>
 
-        {% else %}
-        
-        <div id="login">
-            <h2>Login</h2>
+    {% else %}
+    <div class="container">
+        <div class="img">
+            <img src="{{ url_for('static', filename='img/mirror.svg') }}" alt="">
+            <h2>welcome to mitmirror</h2>
+        </div>
+        <div class="login-container">
             <form action="" method="POST">
                 {{ form.csrf_token }}
-                <div class="campo">
-                    <h3>Username</h3>
-                    <label for="username">
-                        {{ form.username(id="username", placeholder="Enter your username here") }}
-                    </label>
-                </div>
-                <div class="campo">
-                    <h3>Password</h3>
-                    <label for="password">
-                        {{ form.password(id="password", placeholder="Enter your password here") }}
-                    </label>
-                    <div class="forgot">
-                        <label for="remember" class="check">
-                            {{ form.remember_me(id="checkbox") }}<strong> Keep me signed in</strong>
-                        </label>
-                        <h3><a id="forgot-password" href="/forgot-password">I forgot my password</a></h3>
+                <img class="avatar" src="{{ url_for('static', filename='img/profile.svg') }}" alt="">
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h5>Username</h5>
+                        {{ form.username(class="input") }}
                     </div>
                 </div>
-                <div class="campo">
-                    <button class="button" type="submit" >Enter</button>
-                    <p id="register">Don't have an accont? <a href="/register">Register!</a></p>
-                </div>      
+                <div class="input-div two">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h5>Password</h5>
+                        {{ form.password(class="input") }}
+                    </div>
+                </div>
+                <div class="link check">
+                    <div class="checkbox">
+                        {{ form.remember_me(id="checkbox") }}<strong> Keep me signed in</strong>
+                    </div>
+                    <a  href="/forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn" value="Login">Login</button>
+                <div class="link register">
+                    <a href="/register">Create an account!</a>
+                </div>
             </form>
         </div>
-        {% endif %}
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% endif %}
 </main>
+
 <div id="flash">
     {% with messages = get_flashed_messages() %}
         {% if messages %}

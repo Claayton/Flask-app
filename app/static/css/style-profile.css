@@ -267,27 +267,3 @@ body {
     height: 100%;
     color: #eee;
 }
-
-#flash {
-    position: fixed;
-    bottom: 20px;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    color: white;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 2);
-    width: 100%;
-}
-
-#flash ul {
-    width: auto;
-    background-image: linear-gradient(to bottom, chartreuse, rgb(61, 121, 2));
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 8px;
-    list-style: none;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
