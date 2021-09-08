@@ -1,68 +1,85 @@
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style-register.css') }}" rel="stylesheet">
 
 {% extends 'base.html' %}
 
-{% block title %}{{ super() }} - Register{% endblock %}
+{% block title %}{{ super() }} - Login{% endblock %}
 
 {% block content %}
 
 <main id="main">
-    <div class="main-container">
-
-        <div id="register">
+    <div class="register-container">
+        <form action="" method="POST">
+            {{ form.csrf_token }}
             <h2>Register</h2>
-            <form action="" method="POST">
-                {{ form.csrf_token }}
-                <fieldset class="camponame">
-                    <div style="display: inline;" class="campo">
-                        <h3>Name</h3>
-                        <label for="name">
-                            {{ form.name(id="name", placeholder="Name", autocomplete="given-name") }}
-                        </label>
+            <fieldset class="camponame"></fieldset>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
                     </div>
-                    <div style="display: inline;" class="campo">
-                        <h3>Last Name</h3>
-                        <label for="lastname">
-                            {{ form.lastname(id="name", placeholder="Last Name", autocomplete="family-name") }}
-                        </label>
+                    <div>
+                        <h5>Name</h5>
+                        {{ form.name( class="input", autocomplete="given-name") }}
                     </div>
-                </fieldset>
-                <div class="campo">
-                    <h3>Email</h3>
-                    <label for="email">
-                        {{ form.email(id="email", placeholder="E-mail", autocomplete="email") }}
-                    </label>
                 </div>
-                <div class="campo">
-                    <h3>Username</h3>
-                    <label for="username">
-                        {{ form.username(id="username", placeholder="Username", autocomplete="username") }}
-                    </label>
+                <div class="input-div two">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h5>Lastname</h5>
+                        {{ form.lastname( class="input", autocomplete="family-name") }}
+                    </div>
                 </div>
-                <div class="campo">
-                    <h3>Password</h3>
-                    <label for="password">
-                        {{ form.password(id="password", placeholder="Password") }}
-                    </label>
+            </fieldset>
+
+            <div class="input-div three">
+                <div class="i">
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class="campo">
-                    <h3>Confirm Password</h3>
-                    <label for="confirm-password">
-                        {{ form.confirm(id="confirm-password", placeholder="Confirm Password") }}
-                    </label>
+                <div>
+                    <h5>Email</h5>
+                    {{ form.email( class="input", autocomplete="email") }}
                 </div>
-                <div class="campo">
-                    <label for="terms" class="terms">
-                        {{ form.terms(id="terms") }}<strong> I read and accept the <a href="/terms" target="_blank">terms of use</a></strong>
-                    </label>
+            </div>
+            <div class="input-div four">
+                <div class="i">
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class="campo">
-                    <button class="button" type="submit" >Submit</button>
-                    <p id="haveaccount">Already have an account? <a href="/login">Login</a></p>
+                <div>
+                    <h5>Username</h5>
+                    {{ form.username( class="input", autocomplete="username") }}
                 </div>
-            </form>
-        </div>        
+            </div>
+            <div class="input-div five">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h5>Password</h5>
+                    {{ form.password( class="input") }}
+                </div>
+            </div>
+            <div class="input-div six">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h5>Confirm Password</h5>
+                    {{ form.confirm( class="input") }}
+                </div>
+            </div>
+            <div class="link check">
+                {{ form.terms }} <strong>I read and accept the <a href="/terms" target="_blank">terms of use</a></strong>
+            </div>
+            <button type="submit" class="btn" value="Login">Sign in</button>
+            <div class="link haveaccount">
+                <p>Already have an account?<a href="/login"> Login</a></p>
+            </div>
+        </form>   
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </main>
 <div id="flash">
     {% with messages = get_flashed_messages() %}
