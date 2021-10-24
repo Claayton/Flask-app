@@ -1,8 +1,12 @@
-DEBUG = True
+import os
+from dotenv import load_dotenv
 
-import env
+load_dotenv()
 
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{}:{}@{}/mitmirror".format(env.mysql_username, env.mysql_password, env.mysql_server)
+SECRET_KEY = os.getenv('secret_key')
+
 SQLALCHEMY_TRACK_MODIFICATIONS = True
-
-SECRET_KEY = env.secret_key
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{}:{}@{}/mitmirror".format(
+    os.getenv('mysql_username'),
+    os.getenv('mysql_password'),
+    os.getenv('mysql_server'))
