@@ -2,12 +2,9 @@ from flask import redirect, url_for
 from flask_login import UserMixin, login_required
 from flask.scaffold import F
 from flask_sqlalchemy import SQLAlchemy
-
 from app.ext.security import bcpt
 from app.ext.auth import lm
-
 from datetime import datetime
-import env
 
 db = SQLAlchemy()
     
@@ -76,6 +73,7 @@ class User(db.Model, UserMixin):
         self.hash_password = self.hash_password(new_password)
 
     def send_email(self, msg_subject, msg_message):
+        import config
         from email.mime.multipart import MIMEMultipart
         from email.mime.text import MIMEText
         import smtplib
@@ -83,8 +81,8 @@ class User(db.Model, UserMixin):
         msg = MIMEMultipart()
         message = msg_message
 
-        password = env.password_mitmirrortests
-        msg['From'] = env.email_mitmirrortests
+        password = config.password_mitmirrortests
+        msg['From'] = config.email_mitmirrortests
         msg['To'] = self.email
         msg['Subject'] = msg_subject
 
