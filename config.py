@@ -10,3 +10,6 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{}:{}@{}/mitmirror".format(
     os.getenv('mysql_username'),
     os.getenv('mysql_password'),
     os.getenv('mysql_server'))
+
+email_mitmirrortests = os.getenv('email_mitmirrortests')
+password_mitmirrortests = os.getenv('password_mitmirrortests')

@@ -1,5 +1,7 @@
 # MitMirror
 
+[Configurando o ambiente para rodar o Projeto](project_setup.md).
+
 Primeira versão do projeto de site com funções de To-Do list e características de rede social.
 Esta versão do projeto foi desenvolvida inicialmente em *Python*, utilizando o micro-framework *Flask* com padrão *MVC* e *MySQL* como Banco de Dados.
 As proximas versões do projeto ja estão em desenvolvimento, desta vez utilizando o *Flask* apenas como API e *VueJS* para consumir os dados e entregar uma melhor experiência para o usuário.
