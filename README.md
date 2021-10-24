@@ -1,5 +1,8 @@
 # MitMirror
 
+[Configurando o ambiente para rodar o Projeto](project_setup.md).
+
+
 Projeto de site com funções de To-Do list e características de rede social.
 O projeto esta sendo desenvolvido em *Python*, utilizando o micro-framework *Flask* e *MySQL* como Banco de Dados.
 ![Tela Inicial do Site](https://user-images.githubusercontent.com/76628101/131269909-6d24fb2a-b359-4e05-a16f-9358b8689580.png)
