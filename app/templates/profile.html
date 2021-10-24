@@ -10,7 +10,7 @@
     <div id="column1-container">
         <section id="perfil">
             <div class="profile-img">
-                <img src="https://previews.dropbox.com/p/thumb/ABS7eCRZiN1iC7AuWM3wmPzqtxkSQb8q9QeSuBakqFhLhlIMGxStM89lfMEYLVB-IM5MxtrclH036UqbKuIrOgSE9hrZZCy2FYS63dpUiTrLjOFsk3R-zhL7C6S42dO6WpibBIk8sZXux5X2hYlRJYvHsy5icOOvVGoJsqYOHE06nkcZ6tn8-zk-GP09U9dZZk2Br_G2uKCw0AJm0vwVIimCsqm-SUUPUnJwa0f67BHkjT1yoImbDyrUCj1VzLKnj_CkjpTYTJ2v4GlqnB44WFf1DaJM0FskvsJZc_2NHK8WOeGwnyZSIGYzgHhExc1Iaiz6D9NWAf_Zs7aKhMfeYuPPcYjj2TBY5Ei0dOGubdKyfQ/p.jpeg?fv_content=true&size_mode=5" alt="image-profile">
+                <img src="{{ url_for('static', filename='img/perfil-teste.jpeg') }}" alt="image-profile">
             </div>
             <strong>{{ current_user.name.title() }}</strong>
             <em>@{{ current_user.username.title() }}</em>
@@ -23,7 +23,7 @@
         </section>
     </div>
     <div id="column2-container">
-        <form action="" method="POST" class="add-task">
+        <form action="#" method="POST" class="add-task">
             {{ form.csrf_token }}
             {{ form.task(id="task", placeholder="Add tasks here") }}
             <button class="button" type="submit">add</button>
@@ -32,17 +32,17 @@
             <div class="tabela">
                 <h2>Myts of the day!</h2>
                 <div class="task-items">
-                    {% with messages = task_message %}
-                        {% if messages %}
-                        <ul>
-                            {% for message in messages %}
-                                <form action="#" class="item">
-                                    <li>{{ message.task }}</li><button class="del-button" type="submit">Delete</button>
+                    <ul>
+                        {% for message in task_message %}
+                            <form action="/deletetask/{{ message.id }}" method="DELETE" class="item" >
+                                <li>{{ message.task }}</li>
+                                    <button class="del-button"
+                                    type="submit">
+                                        Delete
+                                    </button>
                                 </form>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                    {% endwith %}
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </section>
@@ -57,9 +57,9 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}

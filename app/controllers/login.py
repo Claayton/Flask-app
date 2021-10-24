@@ -1,13 +1,14 @@
 from flask.templating import render_template
-from flask import redirect, url_for, flash
+from flask import redirect, url_for, flash, Blueprint
 from flask_login import login_user, logout_user, login_required
+from app.models.tables import db
 
-from app import app, db
+bp = Blueprint('bp_login', __name__)
 
 from app.models.tables import User
 from app.models.forms import LoginForm, RegisterForm
 
-@app.route('/login/', methods=['GET', 'POST'])
+@bp.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -23,17 +24,17 @@ def login():
     return render_template('login.html',
                             form=form)
 
-@app.route('/forgot-password/')
+@bp.route('/forgot-password/')
 def forgot_password():
     return render_template('forgot-password.html')
 
-@app.route('/logout/')
+@bp.route('/logout/')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('.login'))
 
-@app.route('/register/', methods=['GET', 'POST'])
+@bp.route('/register/', methods=['GET', 'POST'])
 def register():
     from datetime import datetime
 

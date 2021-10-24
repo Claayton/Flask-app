@@ -1,10 +1,16 @@
 from flask import redirect, url_for
 from flask_login import UserMixin, login_required
 from flask.scaffold import F
-from app import db, lm, bcpt
+from flask_sqlalchemy import SQLAlchemy
+
+from app.ext.security import bcpt
+from app.ext.auth import lm
+
 from datetime import datetime
 import env
 
+db = SQLAlchemy()
+    
 @lm.user_loader
 def load_user(user_id):
     return User.query.filter_by(id=user_id).first()
@@ -91,7 +97,7 @@ class User(db.Model, UserMixin):
 
     @login_required
     def get_profile(self):
-        return redirect(url_for('profile'))
+        return redirect(url_for('bp_home.profile'))
 
     
 
@@ -120,4 +126,7 @@ class Friend(db.Model):
     friend_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', foreign_keys=user_id)
-    friend = db.relationship('User', foreign_keys=friend_id)
+
+def init_app(app):
+    db.init_app(app)
+    return app
