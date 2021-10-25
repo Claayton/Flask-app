@@ -18,4 +18,4 @@ build/
 
 app/storage.sqlite3
 
-migrations/
+/migrations/
