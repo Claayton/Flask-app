@@ -23,7 +23,17 @@ FLASK_APP=run.py
 FLASK_ENV=development
 secret_key=aquivoceescreveumachavesupersecreta
 ```
-*E para rodar o projeto basta digitar:*
+*Agora você precisa criar o banco de dados e fazer as migrações:
+```
+flask db init
+```
+```
+flask db migrate
+```
+```
+flask db upgrade
+```
+*O projeto ja está configurado e pronto para ser testado em modo de desenvolvedor:*
 ```
 flask run
 ```
