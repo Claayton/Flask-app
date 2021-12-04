@@ -7,6 +7,8 @@ Esta versão do projeto foi desenvolvida inicialmente em *Python*, utilizando o 
 As proximas versões do projeto ja estão em desenvolvimento, desta vez utilizando o *Flask* apenas como API e *VueJS* para consumir os dados e entregar uma melhor experiência para o usuário.
 vc pode encontrar as outras versões do projeto nos meus repositórios.
 
+Esse repositório continua sendo atualizado constantemente, utilizo ele para fazer meus testes e seguir os meus estudos.
+
 ---
 
 ## Register e Login:
